@@ -61,55 +61,55 @@ public class WatchlistTests {
     static List<TestCase> tests() {
         List<TestCase> t = new ArrayList<>();
 
-//        t.add(new TestCase("twenty percent drop notifies the watcher", () -> {
-//            App app = new App();
-//            app.listItem("I1", 10_000);
-//            app.watch("B1", "I1", Channel.EMAIL);
-//            app.prices.updatePrice("I1", 8_000, 1);
-//            assertEquals(1, app.sent().size(), "one notification expected");
-//        }));
-//
-//        t.add(new TestCase("exactly ten percent drop notifies on every channel", () -> {
-//            App app = new App();
-//            app.listItem("I1", 10_000);
-//            app.watch("B1", "I1", Channel.EMAIL, Channel.PUSH);
-//            app.prices.updatePrice("I1", 9_000, 1);
-//            assertEquals(2, app.sent().size(), "EMAIL and PUSH expected");
-//        }));
-//
-//        t.add(new TestCase("small drop does not notify", () -> {
-//            App app = new App();
-//            app.listItem("I1", 10_000);
-//            app.watch("B1", "I1", Channel.EMAIL);
-//            app.prices.updatePrice("I1", 9_500, 1);
-//            assertEquals(0, app.sent().size(), "5% drop must not notify");
-//        }));
-//
-//        t.add(new TestCase("price increase does not notify", () -> {
-//            App app = new App();
-//            app.listItem("I1", 10_000);
-//            app.watch("B1", "I1", Channel.EMAIL);
-//            app.prices.updatePrice("I1", 12_000, 1);
-//            assertEquals(0, app.sent().size(), "increase must not notify");
-//        }));
-//
-//        t.add(new TestCase("watch with no channels defaults to in-app", () -> {
-//            App app = new App();
-//            app.listItem("I1", 10_000);
-//            app.watch("B1", "I1");
-//            app.prices.updatePrice("I1", 5_000, 1);
-//            assertEquals(1, app.sent().size(), "one in-app notification expected");
-//            assertEquals(Channel.IN_APP, app.sent().get(0).channel(), "default channel");
-//        }));
+        t.add(new TestCase("twenty percent drop notifies the watcher", () -> {
+            App app = new App();
+            app.listItem("I1", 10_000);
+            app.watch("B1", "I1", Channel.EMAIL);
+            app.prices.updatePrice("I1", 8_000, 1);
+            assertEquals(1, app.sent().size(), "one notification expected");
+        }));
 
-//        t.add(new TestCase("a second drop notifies again", () -> {
-//            App app = new App();
-//            app.listItem("I1", 10_000);
-//            app.watch("B1", "I1", Channel.PUSH);
-//            app.prices.updatePrice("I1", 9_000, 1);
-//            app.prices.updatePrice("I1", 8_000, 2);
-//            assertEquals(2, app.sent().size(), "each new lower price is a new notification");
-//        }));
+        t.add(new TestCase("exactly ten percent drop notifies on every channel", () -> {
+            App app = new App();
+            app.listItem("I1", 10_000);
+            app.watch("B1", "I1", Channel.EMAIL, Channel.PUSH);
+            app.prices.updatePrice("I1", 9_000, 1);
+            assertEquals(2, app.sent().size(), "EMAIL and PUSH expected");
+        }));
+
+        t.add(new TestCase("small drop does not notify", () -> {
+            App app = new App();
+            app.listItem("I1", 10_000);
+            app.watch("B1", "I1", Channel.EMAIL);
+            app.prices.updatePrice("I1", 9_500, 1);
+            assertEquals(0, app.sent().size(), "5% drop must not notify");
+        }));
+
+        t.add(new TestCase("price increase does not notify", () -> {
+            App app = new App();
+            app.listItem("I1", 10_000);
+            app.watch("B1", "I1", Channel.EMAIL);
+            app.prices.updatePrice("I1", 12_000, 1);
+            assertEquals(0, app.sent().size(), "increase must not notify");
+        }));
+
+        t.add(new TestCase("watch with no channels defaults to in-app", () -> {
+            App app = new App();
+            app.listItem("I1", 10_000);
+            app.watch("B1", "I1");
+            app.prices.updatePrice("I1", 5_000, 1);
+            assertEquals(1, app.sent().size(), "one in-app notification expected");
+            assertEquals(Channel.IN_APP, app.sent().get(0).channel(), "default channel");
+        }));
+
+        t.add(new TestCase("a second drop notifies again", () -> {
+            App app = new App();
+            app.listItem("I1", 10_000);
+            app.watch("B1", "I1", Channel.PUSH);
+            app.prices.updatePrice("I1", 9_000, 1);
+            app.prices.updatePrice("I1", 8_000, 2);
+            assertEquals(2, app.sent().size(), "each new lower price is a new notification");
+        }));
 
         t.add(new TestCase("watching the same item twice notifies once", () -> {
             App app = new App();

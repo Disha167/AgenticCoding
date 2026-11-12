@@ -24,7 +24,7 @@ public class PriceService {
         if (newPriceCents <= 0) {
             throw new IllegalArgumentException("Price must be positive");
         }
-        if (item.getVersion() < expectedVersion) {
+        if (item.getVersion() != expectedVersion) {
             return false;
         }
         long oldPriceCents = item.getCurrentPriceCents();
